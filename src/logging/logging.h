@@ -14,8 +14,13 @@
 #ifndef _OBK_LOGGING_H
 #define _OBK_LOGGING_H
 
-void addLog(char *fmt, ...);
-void addLogAdv(int level, int feature, char *fmt, ...);
+#ifdef __cplusplus
+extern "C" void addLog(const char *fmt, ...);
+extern "C" void addLogAdv(int level, int feature, const char *fmt, ...);
+#else
+void addLog(const char *fmt, ...);
+void addLogAdv(int level, int feature, const char *fmt, ...);
+#endif
 
 #define ADDLOG_ERROR(x, y, ...) addLogAdv(LOG_ERROR, x, y, ##__VA_ARGS__)
 #define ADDLOG_WARN(x, y, ...)  addLogAdv(LOG_WARN, x, y, ##__VA_ARGS__)

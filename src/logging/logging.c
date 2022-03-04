@@ -139,7 +139,7 @@ static void initLog() {
 
 // adds a log to the log memory
 // if head collides with either tail, move the tails on.
-void addLog(char *fmt, ...){
+void addLog(const char *fmt, ...){
     int len;
     va_list argList;
     BaseType_t taken;
@@ -192,7 +192,7 @@ void addLog(char *fmt, ...){
 
 // adds a log to the log memory
 // if head collides with either tail, move the tails on.
-void addLogAdv(int level, int feature, char *fmt, ...){
+void addLogAdv(int level, int feature, const char *fmt, ...){
     char *t = tmp;
     if (!((1<<feature) & logfeatures)){
         return;

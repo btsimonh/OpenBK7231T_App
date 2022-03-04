@@ -56,6 +56,9 @@
 #include "flash_config/flash_config.h"
 #include "flash_config/flash_vars_vars.h"
 
+#include "cpptest/cpptest.h"
+
+
 #undef Malloc
 #undef Free
 #define Malloc os_malloc
@@ -359,6 +362,9 @@ void user_main(void)
     bForceOpenAP = 1;
 		ADDLOG_INFO(LOG_FEATURE_MAIN, "###### would force AP mode - boot failures %d", bootFailures);
   }
+
+
+  testcpp();
 
 	if(*wifi_ssid == 0 || *wifi_pass == 0 || bForceOpenAP) {
 		// start AP mode in 5 seconds
