@@ -60,6 +60,17 @@ static int CMD_Restart(const void *context, const char *cmd, const char *args, i
 
 	return 1;
 }
+static int CMD_ClearAll(const void *context, const char *cmd, const char *args, int cmdFlags) {
+
+	CFG_SetDefaultConfig();
+	CFG_Save_IfThereArePendingChanges();
+
+	CHANNEL_ClearAllChannels();
+
+	ADDLOG_INFO(LOG_FEATURE_CMD, "CMD_ClearAll: all clear");
+
+	return 1;
+}
 static int CMD_ClearConfig(const void *context, const char *cmd, const char *args, int cmdFlags){
 
 	CFG_SetDefaultConfig();
